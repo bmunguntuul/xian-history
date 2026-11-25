@@ -1,0 +1,1232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Xi'an — Three Thousand Years at the Heart of China</title>
+<meta name="description" content="A visual introduction to the history of Xi'an, the ancient capital Chang'an: Zhou ritual bronzes, Qin terracotta warriors, Han Silk Road, Tang cosmopolitanism, and the Ming city wall." />
+<style>
+  :root {
+    --ink: #14100d;
+    --ink-soft: #1e1814;
+    --paper: #f3ece1;
+    --paper-dim: #e2d8c8;
+    --sand: #cdb894;
+    --blood: #a8322a;
+    --blood-soft: #c4493f;
+    --gold: #c09443;
+    --muted: #9d8f7c;
+    --line: rgba(243, 236, 225, 0.14);
+    --maxw: 1180px;
+    --font-display: "Songti SC", "Noto Serif SC", "Times New Roman", serif;
+    --font-body: "Helvetica Neue", "Segoe UI", system-ui, -apple-system, sans-serif;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    background: var(--ink);
+    color: var(--paper);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  img { display: block; max-width: 100%; }
+
+  a { color: inherit; }
+
+  ::selection { background: var(--blood); color: #fff; }
+
+  .wrap {
+    width: 100%;
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: 0 clamp(20px, 5vw, 56px);
+  }
+
+  /* ---------- Progress + nav ---------- */
+  #progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 2px;
+    width: 0;
+    background: linear-gradient(90deg, var(--gold), var(--blood-soft));
+    z-index: 90;
+  }
+
+  header.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 80;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 16px clamp(20px, 5vw, 56px);
+    background: rgba(20, 16, 13, 0);
+    border-bottom: 1px solid transparent;
+    transition: background 300ms ease, border-color 300ms ease, padding 300ms ease;
+  }
+
+  header.nav.solid {
+    background: rgba(20, 16, 13, 0.86);
+    backdrop-filter: blur(12px);
+    border-bottom-color: var(--line);
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-display);
+    font-size: 17px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .logo .seal {
+    display: grid;
+    place-items: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 4px;
+    background: var(--blood);
+    font-size: 15px;
+    letter-spacing: 0;
+    line-height: 1;
+  }
+
+  nav.links {
+    display: flex;
+    gap: clamp(14px, 2.4vw, 30px);
+    font-size: 12px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  nav.links a {
+    text-decoration: none;
+    color: var(--muted);
+    padding: 4px 0;
+    border-bottom: 1px solid transparent;
+    transition: color 200ms ease, border-color 200ms ease;
+  }
+
+  nav.links a:hover,
+  nav.links a.active {
+    color: var(--paper);
+    border-bottom-color: var(--blood-soft);
+  }
+
+  .menu-btn {
+    display: none;
+    background: none;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    color: var(--paper);
+    padding: 8px 12px;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    cursor: pointer;
+  }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    position: relative;
+    min-height: 100svh;
+    display: grid;
+    align-items: end;
+    overflow: hidden;
+  }
+
+  .hero img.bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: saturate(0.92) brightness(0.62);
+    transform: scale(1.04);
+    animation: slowZoom 24s ease-out forwards;
+  }
+
+  @keyframes slowZoom {
+    from { transform: scale(1.12); }
+    to { transform: scale(1); }
+  }
+
+  .hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(to top, var(--ink) 4%, rgba(20, 16, 13, 0.55) 45%, rgba(20, 16, 13, 0.25) 100%),
+      radial-gradient(70% 55% at 80% 20%, rgba(168, 50, 42, 0.22), transparent 70%);
+  }
+
+  .hero .inner {
+    position: relative;
+    z-index: 2;
+    padding-bottom: clamp(48px, 9vh, 96px);
+    padding-top: 120px;
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 11px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 22px;
+  }
+
+  .eyebrow::before {
+    content: "";
+    width: 36px;
+    height: 1px;
+    background: var(--gold);
+    opacity: 0.7;
+  }
+
+  h1 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(58px, 13vw, 148px);
+    line-height: 0.94;
+    letter-spacing: -0.02em;
+    margin: 0 0 8px;
+  }
+
+  .cn {
+    font-family: var(--font-display);
+    font-size: clamp(20px, 3vw, 30px);
+    letter-spacing: 0.5em;
+    color: var(--sand);
+    margin: 0 0 26px;
+  }
+
+  .hero p.lede {
+    max-width: 54ch;
+    font-size: clamp(15px, 1.6vw, 18px);
+    color: #d9d0c3;
+    margin: 0 0 34px;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 13px 24px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    transition: all 220ms ease;
+  }
+
+  .btn.primary {
+    background: var(--blood);
+    border-color: var(--blood);
+    color: #fff;
+  }
+
+  .btn.primary:hover { background: var(--blood-soft); border-color: var(--blood-soft); }
+
+  .btn.ghost:hover { border-color: var(--sand); color: var(--sand); }
+
+  .scroll-cue {
+    position: absolute;
+    right: clamp(20px, 5vw, 56px);
+    bottom: 34px;
+    z-index: 2;
+    writing-mode: vertical-rl;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* ---------- Sections ---------- */
+  section { position: relative; }
+
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+    padding-top: clamp(56px, 9vw, 104px);
+    margin-bottom: 40px;
+    border-top: 1px solid var(--line);
+  }
+
+  .section-head h2 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(30px, 4.4vw, 52px);
+    letter-spacing: -0.01em;
+    margin: 0;
+    line-height: 1.1;
+  }
+
+  .section-head .num {
+    font-size: 11px;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .section-intro {
+    max-width: 62ch;
+    color: #c9c0b3;
+    font-size: 16px;
+    margin: 0 0 44px;
+  }
+
+  /* ---------- Intro / quote ---------- */
+  .intro {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: clamp(28px, 5vw, 72px);
+    align-items: center;
+  }
+
+  .intro .text p {
+    margin: 0 0 18px;
+    color: #cdc4b7;
+  }
+
+  .intro .text p strong { color: var(--paper); font-weight: 600; }
+
+  blockquote {
+    margin: 30px 0 0;
+    padding: 20px 0 20px 22px;
+    border-left: 2px solid var(--blood);
+    font-family: var(--font-display);
+    font-size: 19px;
+    line-height: 1.5;
+    color: var(--paper);
+  }
+
+  blockquote cite {
+    display: block;
+    margin-top: 10px;
+    font-family: var(--font-body);
+    font-style: normal;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .intro figure {
+    margin: 0;
+    position: relative;
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+  }
+
+  .intro figure img {
+    width: 100%;
+    height: clamp(320px, 52vh, 520px);
+    object-fit: cover;
+    filter: saturate(0.9);
+  }
+
+  .intro figcaption,
+  figure.cap figcaption {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 26px 18px 14px;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    color: #ded5c8;
+    background: linear-gradient(to top, rgba(10, 8, 6, 0.9), transparent);
+  }
+
+  /* ---------- Stats ---------- */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    margin: clamp(44px, 6vw, 72px) 0 0;
+  }
+
+  .stat {
+    background: var(--ink);
+    padding: 26px clamp(14px, 2vw, 26px);
+  }
+
+  .stat .v {
+    font-family: var(--font-display);
+    font-size: clamp(26px, 3.2vw, 40px);
+    line-height: 1.1;
+    color: var(--paper);
+    margin-bottom: 6px;
+  }
+
+  .stat .v span { color: var(--gold); }
+
+  .stat .k {
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* ---------- Timeline ---------- */
+  .timeline { position: relative; }
+
+  .timeline::before {
+    content: "";
+    position: absolute;
+    left: 132px;
+    top: 8px;
+    bottom: 8px;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, var(--line) 6%, var(--line) 94%, transparent);
+  }
+
+  .era {
+    display: grid;
+    grid-template-columns: 132px 1fr;
+    gap: clamp(18px, 3vw, 44px);
+    padding: 26px 0;
+    position: relative;
+  }
+
+  .era::before {
+    content: "";
+    position: absolute;
+    left: 127px;
+    top: 36px;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--ink);
+    border: 1px solid var(--sand);
+    transition: background 250ms ease, box-shadow 250ms ease;
+  }
+
+  .era:hover::before,
+  .era.in::before {
+    background: var(--blood-soft);
+    border-color: var(--blood-soft);
+    box-shadow: 0 0 0 5px rgba(168, 50, 42, 0.16);
+  }
+
+  .era .when {
+    text-align: right;
+    padding-right: 6px;
+    font-family: var(--font-display);
+    color: var(--sand);
+    font-size: clamp(15px, 1.6vw, 18px);
+    line-height: 1.4;
+    padding-top: 26px;
+  }
+
+  .era .when small {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 6px;
+  }
+
+  .era .body { padding-top: 18px; }
+
+  .era h3 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(21px, 2.4vw, 28px);
+    margin: 0 0 8px;
+    letter-spacing: -0.01em;
+  }
+
+  .era p {
+    margin: 0;
+    color: #c4bbae;
+    max-width: 68ch;
+    font-size: 15px;
+  }
+
+  .era .tag {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 4px 10px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* ---------- Landmarks ---------- */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: clamp(14px, 2vw, 22px);
+  }
+
+  .card {
+    position: relative;
+    grid-column: span 4;
+    border: 1px solid var(--line);
+    background: var(--ink-soft);
+    overflow: hidden;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    transition: transform 350ms ease, border-color 350ms ease;
+  }
+
+  .card:hover { transform: translateY(-4px); border-color: rgba(192, 148, 67, 0.4); }
+
+  .card.wide { grid-column: span 8; }
+  .card.tall img { height: 420px; }
+  .card img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    filter: saturate(0.92) brightness(0.92);
+    transition: transform 700ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+
+  .card:hover img { transform: scale(1.04); }
+
+  .card .pad { padding: 20px 22px 24px; }
+
+  .card .kicker {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+
+  .card h3 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 22px;
+    margin: 0 0 8px;
+  }
+
+  .card p {
+    margin: 0;
+    font-size: 14px;
+    color: var(--muted);
+  }
+
+  /* ---------- Legacy split ---------- */
+  .legacy {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: clamp(28px, 5vw, 64px);
+    align-items: start;
+  }
+
+  .legacy figure {
+    margin: 0;
+    position: relative;
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+  }
+
+  .legacy figure img {
+    width: 100%;
+    height: clamp(320px, 50vh, 520px);
+    object-fit: cover;
+  }
+
+  .pillars { display: grid; gap: 2px; }
+
+  .pillar {
+    padding: 20px 0;
+    border-bottom: 1px solid var(--line);
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    gap: 16px;
+  }
+
+  .pillar:first-child { border-top: 1px solid var(--line); }
+
+  .pillar .idx {
+    font-family: var(--font-display);
+    color: var(--blood-soft);
+    font-size: 15px;
+    padding-top: 2px;
+  }
+
+  .pillar h4 {
+    margin: 0 0 6px;
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .pillar p {
+    margin: 0;
+    font-size: 14px;
+    color: var(--muted);
+    max-width: 56ch;
+  }
+
+  /* ---------- Closing ---------- */
+  .closing {
+    margin-top: clamp(64px, 9vw, 116px);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: clamp(48px, 7vw, 88px) 0;
+    text-align: center;
+    background:
+      radial-gradient(60% 100% at 50% 0%, rgba(168, 50, 42, 0.14), transparent 70%);
+  }
+
+  .closing h2 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(26px, 4vw, 44px);
+    margin: 0 auto 16px;
+    max-width: 24ch;
+    line-height: 1.2;
+  }
+
+  .closing p {
+    margin: 0 auto;
+    max-width: 56ch;
+    color: var(--muted);
+    font-size: 15px;
+  }
+
+  /* ---------- Footer ---------- */
+  footer {
+    padding: 48px 0 56px;
+    font-size: 12px;
+    color: #6f6558;
+  }
+
+  .foot-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr 0.8fr;
+    gap: 32px;
+  }
+
+  footer h5 {
+    margin: 0 0 10px;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--sand);
+  }
+
+  footer ul { list-style: none; margin: 0; padding: 0; }
+  footer li { margin-bottom: 6px; line-height: 1.55; }
+  footer a { color: #8f8477; text-decoration: none; border-bottom: 1px solid transparent; }
+  footer a:hover { color: var(--paper); border-bottom-color: var(--line); }
+
+  /* ---------- Reveal ---------- */
+  .reveal {
+    opacity: 0;
+    transform: translateY(22px);
+    transition: opacity 800ms cubic-bezier(0.2, 0.7, 0.2, 1), transform 800ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+
+  .reveal.in { opacity: 1; transform: none; }
+
+  /* ---------- Toast / notice ---------- */
+  .note {
+    font-size: 11px;
+    color: #6f6558;
+    letter-spacing: 0.04em;
+  }
+
+  @media (max-width: 980px) {
+    .intro, .legacy { grid-template-columns: 1fr; }
+    .intro figure { order: -1; }
+    .stats { grid-template-columns: repeat(2, 1fr); }
+    .card, .card.wide { grid-column: span 6; }
+    .timeline::before { left: 88px; }
+    .era { grid-template-columns: 88px 1fr; }
+    .era::before { left: 83px; }
+    .era .when { padding-top: 24px; font-size: 14px; }
+    .foot-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (max-width: 700px) {
+    nav.links {
+      position: fixed;
+      inset: 62px 0 auto 0;
+      flex-direction: column;
+      gap: 0;
+      padding: 8px clamp(20px, 5vw, 56px) 18px;
+      background: rgba(20, 16, 13, 0.97);
+      border-bottom: 1px solid var(--line);
+      display: none;
+    }
+
+    nav.links.open { display: flex; }
+
+    nav.links a { padding: 12px 0; border-bottom: 1px solid rgba(243, 236, 225, 0.06); }
+
+    .menu-btn { display: block; }
+
+    .card, .card.wide { grid-column: span 12; }
+
+    .scroll-cue { display: none; }
+
+    .timeline::before { left: 8px; }
+    .era { grid-template-columns: 1fr; padding-left: 26px; }
+    .era::before { left: 3px; top: 30px; }
+    .era .when {
+      text-align: left;
+      padding-top: 0;
+      font-family: var(--font-body);
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .era .when small { display: inline; margin-left: 8px; }
+    .era .body { padding-top: 6px; }
+
+    .foot-grid { grid-template-columns: 1fr; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .hero img.bg { animation: none; }
+    .reveal { opacity: 1; transform: none; transition: none; }
+  }
+</style>
+</head>
+<body>
+<div id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <a class="logo" href="#top"><span class="seal">安</span> Chang'an</a>
+  <nav class="links" id="links" aria-label="Sections">
+    <a href="#overview">Overview</a>
+    <a href="#timeline">Timeline</a>
+    <a href="#landmarks">Landmarks</a>
+    <a href="#legacy">Legacy</a>
+  </nav>
+  <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="links">Menu</button>
+</header>
+
+<section class="hero" id="top">
+  <img class="bg"
+       src="images/hero.jpg"
+       alt="Xi'an city wall at blue hour, lined with glowing red lanterns and watchtowers" width="1585" height="875" fetchpriority="high" />
+  <div class="wrap inner">
+    <span class="eyebrow">Shaanxi · China</span>
+    <h1>Xi'an</h1>
+    <p class="cn">长安</p>
+    <p class="lede">
+      For more than a thousand years this was Chang'an — "Perpetual Peace" — the eastern
+      terminus of the Silk Road and capital to thirteen dynasties. Emperors, monks, merchants
+      and poets all left their mark on the same square of land.
+    </p>
+    <div class="hero-actions">
+      <a class="btn primary" href="#timeline">Follow the timeline</a>
+      <a class="btn ghost" href="#landmarks">See the landmarks</a>
+    </div>
+  </div>
+  <span class="scroll-cue">Scroll</span>
+</section>
+
+<main>
+
+  <section id="overview">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <h2>A city older than its name</h2>
+        <span class="num">01 — Overview</span>
+      </div>
+
+      <div class="intro">
+        <div class="text reveal">
+          <p>
+            Xi'an sits on the Guanzhong plain, ringed by mountains and watered by the Wei River.
+            That geography made it a natural fortress and a natural capital: defensible, fertile,
+            and positioned where routes from the Yellow River plain meet the roads west.
+          </p>
+          <p>
+            The city has carried several names. The Western Zhou built twin capitals here called
+            <strong>Fenghao</strong>. The Qin ruled from <strong>Xianyang</strong>, just across the
+            river. Under the Han and Tang the city was <strong>Chang'an</strong>, one of the largest
+            and most cosmopolitan cities on earth. Only in 1369 did the Ming give it the name it
+            keeps today: <strong>Xi'an</strong>, "Western Peace".
+          </p>
+          <p>
+            What survives is layered rather than preserved — a Ming wall on Tang foundations,
+            a Tang pagoda above a Han river plain, and a Qin army of clay still standing guard
+            underground.
+          </p>
+          <blockquote>
+            "In Chang'an the moon rises over a thousand gates."
+            <cite>Tang-dynasty imagery of the capital</cite>
+          </blockquote>
+        </div>
+
+        <figure class="reveal">
+          <img
+            src="images/wall.jpg"
+            alt="The Ming city wall of Xi'an rising above its moat" width="1032" height="1650" loading="lazy" />
+          <figcaption>The Ming wall still traces the outline of the Tang imperial city.</figcaption>
+        </figure>
+      </div>
+
+      <div class="stats reveal">
+        <div class="stat">
+          <div class="v">3,100<span>+</span></div>
+          <div class="k">Years of recorded settlement</div>
+        </div>
+        <div class="stat">
+          <div class="v">13</div>
+          <div class="k">Dynasties that ruled from here</div>
+        </div>
+        <div class="stat">
+          <div class="v">1M<span>+</span></div>
+          <div class="k">Peak Tang population estimate</div>
+        </div>
+        <div class="stat">
+          <div class="v">13.7<span> km</span></div>
+          <div class="k">Length of the Ming city wall</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="timeline">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <h2>Timeline</h2>
+        <span class="num">02 — Chronology</span>
+      </div>
+      <p class="section-intro reveal">
+        Nine moments that explain why the city looks and feels the way it does today.
+      </p>
+
+      <div class="timeline">
+        <article class="era reveal">
+          <div class="when">c. 4500 BCE<small>Neolithic</small></div>
+          <div class="body">
+            <h3>Banpo: a village by the river</h3>
+            <p>
+              A Yangshao-culture settlement of round thatched houses, storage pits and a ditch —
+              excavated in 1953 and now one of the best windows into Neolithic life in China.
+            </p>
+            <span class="tag">Prehistory</span>
+          </div>
+        </article>
+
+        <article class="era reveal">
+          <div class="when">1046 BCE<small>Western Zhou</small></div>
+          <div class="body">
+            <h3>Fenghao, the first capitals</h3>
+            <p>
+              The Zhou found twin cities on opposite banks of the Feng River. Ritual bronzes cast
+              here set the template for Chinese ceremonial culture for the next three thousand years.
+            </p>
+            <span class="tag">Ritual &amp; bronze</span>
+          </div>
+        </article>
+
+        <article class="era reveal">
+          <div class="when">221 BCE<small>Qin</small></div>
+          <div class="body">
+            <h3>Unification — and an army of clay</h3>
+            <p>
+              Qin Shi Huang conquers the rival states and rules from Xianyang. His mausoleum,
+              guarded by thousands of life-size terracotta soldiers, is rediscovered by farmers
+              sinking a well in 1974.
+            </p>
+            <span class="tag">Empire</span>
+          </div>
+        </article>
+
+        <article class="era reveal">
+          <div class="when">202 BCE<small>Western Han</small></div>
+          <div class="body">
+            <h3>Chang'an becomes a world city</h3>
+            <p>
+              The Han build their capital here and give it the name it will carry for a millennium.
+              Around 138 BCE the envoy Zhang Qian travels west — the missions that open what we
+              now call the Silk Road.
+            </p>
+            <span class="tag">Silk Road</span>
+          </div>
+        </article>
+
+        <article class="era reveal">
+          <div class="when">618–907 CE<small>Tang</small></div>
+          <div class="body">
+            <h3>The cosmopolitan golden age</h3>
+            <p>
+              Tang Chang'an is laid out on a grid of walled wards, home to perhaps a million
+              people, with Persian merchants, Japanese students, Central Asian musicians and
+              Buddhist monks. The Big Wild Goose Pagoda rises in 652 to hold the sutras Xuanzang
+              carried home from India.
+            </p>
+            <span class="tag">Golden age</span>
+          </div>
+        </article>
+
+        <article class="era reveal">
+          <div class="when">755 CE<small>Tang</small></div>
+          <div class="body">
+            <h3>Rebellion and a long decline</h3>
+            <p>
+              The An Lushan rebellion tears the empire apart. Chang'an is sacked more than once,
+              and although the Tang survive, the capital never recovers its old scale.
+            </p>
+            <span class="tag">Turning point</span>
+          </div>
+        </article>
+
+        <article class="era reveal">
+          <div class="when">1369–1378<small>Ming</small></div>
+          <div class="body">
+            <h3>A new name, a new wall</h3>
+            <p>
+              The Ming rename the city Xi'an and rebuild its defences: a 13.7 km brick wall,
+              12 m high, with gates, watchtowers and a moat. It is the most complete ancient city
+              wall in China and still defines the old town.
+            </p>
+            <span class="tag">City wall</span>
+          </div>
+        </article>
+
+        <article class="era reveal">
+          <div class="when">1936<small>Republic</small></div>
+          <div class="body">
+            <h3>The Xi'an Incident</h3>
+            <p>
+              Chiang Kai-shek is detained here by his own generals, forcing a united front against
+              Japan. A modern political turning point in a city of ancient ones.
+            </p>
+            <span class="tag">Modern era</span>
+          </div>
+        </article>
+
+        <article class="era reveal">
+          <div class="when">1987<small>UNESCO</small></div>
+          <div class="body">
+            <h3>The warriors enter world heritage</h3>
+            <p>
+              The Mausoleum of the First Qin Emperor is inscribed on the UNESCO World Heritage
+              List, and Xi'an becomes one of China's principal destinations for history.
+            </p>
+            <span class="tag">Heritage</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="landmarks">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <h2>What to see</h2>
+        <span class="num">03 — Landmarks</span>
+      </div>
+      <p class="section-intro reveal">
+        Six places that carry the story — from a Neolithic village to a Tang pagoda.
+      </p>
+
+      <div class="grid">
+        <article class="card wide reveal">
+          <img
+            src="images/terracotta.jpg"
+            alt="Rows of terracotta warriors inside the excavation pit" width="1585" height="875" loading="lazy" />
+          <div class="pad">
+            <div class="kicker">Lintong · 35 km east</div>
+            <h3>Terracotta Army</h3>
+            <p>
+              Thousands of individually modelled soldiers, horses and chariots, buried around
+              210 BCE to guard the First Emperor. Each face appears subtly different; no two are
+              quite alike. Allow half a day.
+            </p>
+          </div>
+        </article>
+
+        <article class="card tall reveal">
+          <img
+            src="images/pagoda.jpg"
+            alt="The seven-storey Big Wild Goose Pagoda at sunset" width="1032" height="1650" loading="lazy" />
+          <div class="pad">
+            <div class="kicker">Daci'en Temple · 652 CE</div>
+            <h3>Big Wild Goose Pagoda</h3>
+            <p>
+              Built to house the scriptures Xuanzang brought back from India — and the model for
+              pagodas across East Asia.
+            </p>
+          </div>
+        </article>
+
+        <article class="card reveal">
+          <img
+            src="images/tang.jpg"
+            alt="Reconstruction of Tang-dynasty Chang'an laid out on a grid" width="1585" height="1246" loading="lazy" />
+          <div class="pad">
+            <div class="kicker">Tang Chang'an</div>
+            <h3>The grid that shaped a capital</h3>
+            <p>
+              Over 100 walled wards arranged like a chessboard, with markets, temples and
+              foreign quarters — an urban plan copied by capitals from Kyoto to Luoyang.
+            </p>
+          </div>
+        </article>
+
+        <article class="card reveal">
+          <img
+            src="images/banpo.jpg"
+            alt="Reconstruction of the Neolithic Banpo village" width="1585" height="1246" loading="lazy" />
+          <div class="pad">
+            <div class="kicker">Banpo · c. 4500 BCE</div>
+            <h3>Banpo Museum</h3>
+            <p>
+              The excavated village itself, under a protective hall: houses, kilns, storage pits
+              and a cemetery from the Yangshao culture.
+            </p>
+          </div>
+        </article>
+
+        <article class="card reveal">
+          <img
+            src="images/quarter.jpg"
+            alt="Night market in Xi'an's Muslim Quarter" width="1585" height="1246" loading="lazy" />
+          <div class="pad">
+            <div class="kicker">Inside the wall</div>
+            <h3>Muslim Quarter</h3>
+            <p>
+              Narrow lanes around the Great Mosque, trading since the Tang. Roujiamo, biangbiang
+              noodles and a food culture that is itself a Silk Road artefact.
+            </p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="legacy">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <h2>What the city gave the world</h2>
+        <span class="num">04 — Legacy</span>
+      </div>
+
+      <div class="legacy">
+        <figure class="reveal">
+          <img
+            src="images/silkroad.jpg"
+            alt="A camel caravan crossing desert dunes on the Silk Road at sunset" width="1680" height="2240" loading="lazy" />
+          <figcaption>From Chang'an, caravan routes ran west toward Central Asia and beyond.</figcaption>
+        </figure>
+
+        <div class="pillars">
+          <div class="pillar reveal">
+            <div class="idx">01</div>
+            <div>
+              <h4>The Silk Road's eastern gate</h4>
+              <p>
+                Han missions and Tang markets turned the city into a clearing house for silk,
+                horses, glass, paper and ideas moving between China, Persia, India and Rome.
+              </p>
+            </div>
+          </div>
+          <div class="pillar reveal">
+            <div class="idx">02</div>
+            <div>
+              <h4>A translation hub for Buddhism</h4>
+              <p>
+                Xuanzang's return in 645 brought hundreds of Sanskrit texts. Teams of monks
+                translated them here, reshaping Chinese religion, philosophy and art.
+              </p>
+            </div>
+          </div>
+          <div class="pillar reveal">
+            <div class="idx">03</div>
+            <div>
+              <h4>The model imperial city</h4>
+              <p>
+                The rectilinear ward system of Chang'an was studied and copied across East Asia,
+                including in the street plans of Nara and Kyoto.
+              </p>
+            </div>
+          </div>
+          <div class="pillar reveal">
+            <div class="idx">04</div>
+            <div>
+              <h4>A golden age of poetry</h4>
+              <p>
+                Li Bai, Du Fu and Wang Wei wrote in and of the capital. The Tang anthology is
+                still the backbone of Chinese literary education.
+              </p>
+            </div>
+          </div>
+          <div class="pillar reveal">
+            <div class="idx">05</div>
+            <div>
+              <h4>Engineering and archaeology</h4>
+              <p>
+                From Qin bronze-casting to Han canals, and from the 1974 terracotta discovery to
+                ongoing excavation, the region remains a laboratory for early Chinese technology.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="closing reveal">
+        <h2>Walk the wall at dusk, and the layers become visible.</h2>
+        <p>
+          Ming bricks, Tang street lines, Han river roads and Qin clay — all within a few
+          kilometres of each other.
+        </p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h5>About this page</h5>
+        <p style="margin:0;">
+          An independent, non-commercial visual introduction to Xi'an's history.
+          Figures are widely cited estimates and vary between sources.
+        </p>
+      </div>
+      <div>
+        <h5>Primary references</h5>
+        <ul>
+          <li>UNESCO World Heritage List — Mausoleum of the First Qin Emperor</li>
+          <li>Shaanxi History Museum &amp; Banpo Museum materials</li>
+          <li>Encyclopaedia Britannica — Xi'an, Chang'an</li>
+        </ul>
+      </div>
+      <div>
+        <h5>Practical notes</h5>
+        <ul>
+          <li>Best seasons: spring and autumn</li>
+          <li>Terracotta Army: book ahead, go early</li>
+          <li>City wall: rent a bike at the South Gate</li>
+        </ul>
+      </div>
+    </div>
+    <p class="note" style="margin-top:34px;">
+      Images are illustrative reconstructions generated for this page, not photographs of the sites.
+    </p>
+  </div>
+</footer>
+
+<script>
+  // Add a solid background to the header once the hero starts scrolling away.
+  const nav = document.getElementById("nav");
+  const progress = document.getElementById("progress");
+
+  function onScroll() {
+    const y = window.scrollY || document.documentElement.scrollTop;
+    nav.classList.toggle("solid", y > 40);
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    progress.style.width = (max > 0 ? (y / max) * 100 : 0) + "%";
+  }
+
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  // Reveal sections and timeline entries as they enter the viewport.
+  const revealObserver = new IntersectionObserver(
+    function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("in");
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.16, rootMargin: "0px 0px -8% 0px" }
+  );
+
+  document.querySelectorAll(".reveal, .era").forEach(function (el) {
+    revealObserver.observe(el);
+  });
+
+  // Highlight the nav link for the section currently in view.
+  const sections = ["overview", "timeline", "landmarks", "legacy"];
+  const navLinks = Array.from(document.querySelectorAll("nav.links a"));
+
+  const sectionObserver = new IntersectionObserver(
+    function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        const id = entry.target.id;
+        navLinks.forEach(function (link) {
+          link.classList.toggle("active", link.getAttribute("href") === "#" + id);
+        });
+      });
+    },
+    { rootMargin: "-45% 0px -50% 0px" }
+  );
+
+  sections.forEach(function (id) {
+    const el = document.getElementById(id);
+    if (el) sectionObserver.observe(el);
+  });
+
+  // Mobile menu toggle.
+  const menuBtn = document.getElementById("menuBtn");
+  const links = document.getElementById("links");
+
+  // Open or close the mobile navigation panel.
+  function toggleMenu() {
+    const open = links.classList.toggle("open");
+    menuBtn.setAttribute("aria-expanded", String(open));
+  }
+
+  menuBtn.addEventListener("click", toggleMenu);
+
+  navLinks.forEach(function (link) {
+    link.addEventListener("click", function () {
+      links.classList.remove("open");
+      menuBtn.setAttribute("aria-expanded", "false");
+    });
+  });
+</script>
+</body>
+</html>
